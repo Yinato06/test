@@ -1,9 +1,9 @@
-a = int(input('Введите первое число: '))
-b = int(input('Введите второе число: '))
-c = int(input('Введите третье число: '))
-if a == b == c:
+first = int(input('Введите первое число: '))
+second = int(input('Введите второе число: '))
+third = int(input('Введите третье число: '))
+if first == second and first == third:
     print('3')
-elif a == b or a == c or b == c:
+elif first == second or first == third or second == third:
     print('2')
 else:
     print('0')
