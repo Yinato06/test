@@ -11,15 +11,31 @@ class House:
             import time
             print(f'*Ты находишься на {i} этаже и думаешь подняться на этаж {new_floor}*')
             time.sleep(2)
-            while i+1 <= new_floor:
-                print(f'*Ты поднимаешься на {i+1} этаж*')
+            while i + 1 <= new_floor:
+                print(f'*Ты поднимаешься на {i + 1} этаж*')
                 time.sleep(2)
                 i += 1
             print(f'*Ты устал, нужен перерыв')
 
+    def __len__(self):
+        return self.floors
+
+
+    def __str__(self):
+        return f'Название: {self.name}, кол-во этажей: {self.floors}'
+
 
 h1 = House('ЖК Горский', 18)
 h2 = House('Домик в деревне', 2)
+h3 = House('ЖК Эльбрус', 10)
+h4 = House('ЖК Акация', 20)
+# __str__
+print(h3)
+print(h4)
+
+# __len__
+print(len(h3))
+print(len(h4))
 
 h1.go_to(5)
 h2.go_to(10)
