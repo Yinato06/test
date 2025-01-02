@@ -7,7 +7,7 @@ class World:
         self.name = name
         self.life = life
 
-    def living(self):
+    def living(self) -> bool:
         """
         Check if the object is alive.
         """
@@ -23,13 +23,13 @@ class Animal(World):
         super().__init__(name, life)
         self.hungry = hungry
 
-    def fed(self):
+    def fed(self) -> bool:
         """
         Check if the object is alive.
         """
         return self.hungry
 
-    def eat(self, food):
+    def eat(self, food) -> None:
 
         if food.edibility:
             print(f'{self.name}: eats {food.name}.')
