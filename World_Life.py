@@ -3,7 +3,7 @@ class World:
     Base class World with common attributes: name, life
     """
 
-    def __init__(self, name, life):
+    def __init__(self, name: str, life: bool) -> None:
         self.name = name
         self.life = life
 
@@ -19,7 +19,7 @@ class Animal(World):
     Animal class, animal with the attribute: hunger.
     """
 
-    def __init__(self, name, life, hungry):
+    def __init__(self, name: str, life: bool, hungry: bool) -> None:
         super().__init__(name, life)
         self.hungry = hungry
 
@@ -48,7 +48,7 @@ class Plant(World):
     Plant class, plant with the attribute: edibility.
     """
 
-    def __init__(self, name, life, edibility):
+    def __init__(self, name: str, life: bool, edibility: bool) -> None:
         super().__init__(name, life)
         self.edibility = edibility
 
