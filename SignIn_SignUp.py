@@ -1,3 +1,6 @@
+import bcrypt
+
+
 class Database:
     """Класс базы данных пользователей"""
 
@@ -5,9 +8,9 @@ class Database:
         # Инициализируем словарь для хранения данных пользователей
         self.data = {}
 
-    def add_user(self, username: str, password: str) -> None:
+    def add_user(self, username: str, hashed_password: bytes) -> None:
         # Добавляем нового пользователя в базу данных
-        self.data[username] = password
+        self.data[username] = hashed_password
 
 
 class User:
@@ -29,9 +32,10 @@ def sign_in():
         login = input('Input login: ')
 
         if login in database.data:
-            password = input('Input password: ')
+            password = input('Input password: ').encode('utf-8')
 
-            if password in database.data[login]:
+
+            if bcrypt.checkpw(password, database.data[login]):
                 print(f'Welcome, {login}.\n')
                 break
 
@@ -68,8 +72,12 @@ def sign_up():
             print('The password must contain at least 1 capital letter.\n')
             continue
 
+        # Хеширование пароля
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+
         # Добавляем пользователя в базу данных и выходим из цикла
-        database.add_user(username, password)
+        database.add_user(username, hashed_password)
         print(f'User {username} successfully registered.\n')
         break
 
