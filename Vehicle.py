@@ -1,10 +1,11 @@
 class Vehicle:
+    __COLOR_VARIANTS = ['white', 'black', 'lavender', 'blue', 'yellow', 'gray', 'purple', 'pink']
+
     def __init__(self, owner: str, __model: str, color: str, __engine_power: int) -> None:
         self.owner = owner
         self.__model = __model
         self.__engine_power = __engine_power
         self.color = color
-        self.__COLOR_VARIANTS = ['white', 'black', 'lavender', 'blue', 'yellow', 'gray', 'purple', 'pink']
 
     def get_owner(self):
         print(f'Owner: {self.owner}')
