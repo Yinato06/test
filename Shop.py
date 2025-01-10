@@ -47,16 +47,22 @@ class Shop:
 
         :param products: Любое количество объектов типа Product
         """
-        with open(self.__file_name, 'r') as file:
-            # Создание множества имен уже существующих продуктов
-            product_line = {line.strip() for line in file}
+        try:
+            with open(self.__file_name, 'r') as file:
+                # Создание множества имен уже существующих продуктов
+                product_line = {line.strip() for line in file}
+        except FileNotFoundError:
+            # Если файла нет - создаем пустой
+            product_line = ''
+
 
         with open(self.__file_name, 'a+') as file:
             for product in products:
-                if f"{product.name}: {product.weight} kg ({product.category})" in product_line:
+                products_str = f"{product.name}: {product.weight} kg ({product.category})"
+                if products_str in product_line:
                     print(f'{product.name} already there')
                 else:
-                    file.write(f"{product.name}: {product.weight} kg ({product.category})\n")
+                    file.write(products_str + "\n")
 
 
 s1 = Shop()
